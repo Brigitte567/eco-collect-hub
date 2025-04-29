@@ -1,10 +1,18 @@
 
 import React from 'react';
 import { Bell, User } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
+  const location = useLocation();
+  const isAuthPage = ['/login', '/register', '/forgot-password'].includes(location.pathname);
+  
+  // Don't render the navbar on auth pages
+  if (isAuthPage) {
+    return null;
+  }
+
   return (
     <nav className="bg-white border-b border-gray-200 px-4 py-2.5 fixed left-0 right-0 top-0 z-50">
       <div className="flex flex-wrap justify-between items-center">
@@ -31,13 +39,17 @@ const Navbar = () => {
             <User className="h-5 w-5 text-gray-500" />
           </Button>
           
-          <Button variant="outline" size="sm" className="ml-4 hidden md:flex">
-            Sign In
-          </Button>
+          <Link to="/login">
+            <Button variant="outline" size="sm" className="ml-4 hidden md:flex">
+              Sign In
+            </Button>
+          </Link>
           
-          <Button size="sm" className="ml-2 hidden md:flex">
-            Register
-          </Button>
+          <Link to="/register">
+            <Button size="sm" className="ml-2 hidden md:flex">
+              Register
+            </Button>
+          </Link>
         </div>
       </div>
     </nav>

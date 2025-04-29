@@ -5,6 +5,12 @@ import { Home, Truck, MapPin, List, Settings, Info } from 'lucide-react';
 
 const Sidebar = () => {
   const location = useLocation();
+  const isAuthPage = ['/login', '/register', '/forgot-password'].includes(location.pathname);
+  
+  // Don't render the sidebar on auth pages
+  if (isAuthPage) {
+    return null;
+  }
   
   const menuItems = [
     { name: 'Dashboard', icon: <Home className="w-5 h-5" />, path: '/' },
