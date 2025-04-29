@@ -14,6 +14,9 @@ import Settings from "./pages/Settings";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ForgotPassword from "./pages/ForgotPassword";
+import CollectionRequests from "./pages/CollectionRequests";
+import NewCollectionRequest from "./pages/NewCollectionRequest";
+import EditCollectionRequest from "./pages/EditCollectionRequest";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +36,9 @@ const App = () => (
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/collection-requests" element={<CollectionRequests />} />
+          <Route path="/new-request" element={<NewCollectionRequest />} />
+          <Route path="/edit-request/:id" element={<EditCollectionRequest />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
